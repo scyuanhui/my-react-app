@@ -1,6 +1,6 @@
 {
   "homepage": "https://github.com/scyuanhui/my-react-app.git",
-  "name": "my-app",
+  "name": "my-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
