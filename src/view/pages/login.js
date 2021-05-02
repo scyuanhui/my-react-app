@@ -2,7 +2,7 @@
  * @Author: yh 
  * @Date: 2021-05-01 11:50:54 
  * @Last Modified by: yh
- * @Last Modified time: 2021-05-01 19:50:27
+ * @Last Modified time: 2021-05-02 11:46:51
  */
 
 import React, { useState, useEffect } from 'react';
@@ -14,6 +14,18 @@ export default function Login(props) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  useEffect(() => {
+    document.addEventListener('keydown',handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown',handleKeyDown);
+    }
+  }, [])
+  const handleKeyDown = (e) => {
+    let keyCode = e.keyCode;
+    if (keyCode=="13") {
+      loginClick()
+    }
+  }
   const inputChange = (e, type)=>{
     let value = e.target.value.trim();
     if (type=="userName") {
