@@ -1,0 +1,47 @@
+.yh-login-wrap{
+  width: 100%;
+  height: 100%;
+  background: url("./../media/picture/loginbg.png") 0 0 no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  .yh-login-main{
+    width: 300px;
+    // height: 200px;
+    position: absolute;
+    top: 35%;
+    right: 25%;
+  }
+  .yh-login-title{
+    width: 100%;
+    height: 30px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  .yh-login-item{
+    display: flex;
+    align-items: center;
+    height: 34px;
+    margin-bottom: 20px;
+    >.yh-label{
+      width: 50px;
+    }
+  }
+  .yh-login-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ant-btn{
+      width: 100%;
+      height: 40px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+    }
+  }
+}
