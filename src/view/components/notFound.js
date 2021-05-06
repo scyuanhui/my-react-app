@@ -2,21 +2,25 @@
  * @Author: yh 
  * @Date: 2021-05-01 12:01:49 
  * @Last Modified by: yh
- * @Last Modified time: 2021-05-01 12:10:14
+ * @Last Modified time: 2021-05-06 13:10:48
  * 404页面
  */
 
 import React from 'react';
 import { Result, Button } from 'antd';
+import {withRouter} from "react-router-dom";
 
-export default function NotFound() {
+function NotFound(props) {
+  const returnLogin = ()=>{
+    props.history.push("/")
+  }
   return (
     <div className="yh-not-found">
       <Result
         status="404"
         title="404"
         subTitle="抱歉，页面它不小心迷路了"
-        extra={<Button type="primary">返回</Button>}
+        extra={<Button type="primary" onClick={returnLogin}>返回</Button>}
       />
       <style>
         {
@@ -35,3 +39,4 @@ export default function NotFound() {
     </div>
   )
 }
+export default withRouter(NotFound)

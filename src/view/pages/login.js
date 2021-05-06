@@ -2,7 +2,7 @@
  * @Author: yh 
  * @Date: 2021-05-01 11:50:54 
  * @Last Modified by: yh
- * @Last Modified time: 2021-05-02 11:46:51
+ * @Last Modified time: 2021-05-06 13:30:13
  */
 
 import React, { useState, useEffect } from 'react';
@@ -13,19 +13,8 @@ import { setUserInfoAction } from "../../redux/action/setUserInfoAction";
 export default function Login(props) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [keyCode, setKeyCode] = useState("");
   const dispatch = useDispatch();
-  useEffect(() => {
-    document.addEventListener('keydown',handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown',handleKeyDown);
-    }
-  }, [])
-  const handleKeyDown = (e) => {
-    let keyCode = e.keyCode;
-    if (keyCode=="13") {
-      loginClick()
-    }
-  }
   const inputChange = (e, type)=>{
     let value = e.target.value.trim();
     if (type=="userName") {
@@ -38,12 +27,16 @@ export default function Login(props) {
     if (!userName) {
       message.warning("请输入账号！");
       return false
+    }else if (userName!="admin") {
+      props.history.push("/error")
+      // message.warning("账号不正确，请重新输入！");
+      return false
     }
     if (!password) {
       message.warning("请输入密码！");
       return false
     } else if (password&&password!="admin") {
-      message.warning("密码不正确，请重新输入！");
+      // message.warning("密码不正确，请重新输入！");
       props.history.push("/error")
       return false
     }
@@ -72,6 +65,7 @@ export default function Login(props) {
             <span className="yh-label">密码：</span>
             <Input 
              onChange={(e)=>{inputChange(e,"password")}}
+             type="password"
             />
           </div>
         </div>
